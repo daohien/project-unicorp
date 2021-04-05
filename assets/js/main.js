@@ -158,6 +158,7 @@ function getBounding() {
             })
         } else if (counter_style01 && pie_chart){
             var number_pie = document.querySelectorAll(".percent .number");
+            var number = document.querySelectorAll(".counter .value .number")
             window.addEventListener("scroll", function check(){
                 number_pie.forEach((item, idx, arr) => {
                     var react = item.getBoundingClientRect();
@@ -178,7 +179,7 @@ function getBounding() {
                     }     
                 })   
             })
-            number.forEach((number_item, idx, arr)=>{
+            number.forEach(function(number_item, idx, arr){
                 var data_number = Number(number_item.dataset.number);
                 window.addEventListener("scroll", function test(){
                     var react = number_item.getBoundingClientRect();
@@ -186,15 +187,15 @@ function getBounding() {
                     var h = window.innerHeight;
                     if ( t < h ) {
                         var start = 0;
-                        var set_Time = setInterval(() => {
+                        var set_Time = setInterval(function(){
                             start += 10;
                             number_item.innerHTML = start;
                             if (start == data_number){
                                 clearInterval(set_Time);
                             }  
-                        }, 100)               
+                        }, 100)
+                        window.removeEventListener("scroll", test);
                     }
-                    window.removeEventListener("scroll", test);
                 })
             })
         }
