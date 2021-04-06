@@ -441,9 +441,7 @@ $time: 0.1s;
         }
     }
     &.hidden {
-        animation: fadeOut 1s;
-        animation-fill-mode: forwards;
-
+        opacity: 0;
     }
 }
 
@@ -458,14 +456,6 @@ $time: 0.1s;
         height: 0px
       }
 }
-
-@keyframes fadeOut {
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
 
 //  Start Header
 

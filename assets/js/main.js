@@ -1,6 +1,8 @@
 function load() {
     let loading = document.querySelector(".loading");
-    loading.className += " hidden";
+    $(window).ready(()=>{
+        loading.className += " hidden";
+    })
 }
 load();
 
