@@ -442,6 +442,7 @@ $time: 0.1s;
     }
     &.hidden {
         opacity: 0;
+        visibility: hidden;
     }
 }
 

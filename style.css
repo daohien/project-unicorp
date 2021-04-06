@@ -367,6 +367,7 @@ img {
 
 .loading.hidden {
   opacity: 0;
+  visibility: hidden;
 }
 
 @-webkit-keyframes animation {
