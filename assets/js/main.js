@@ -58,7 +58,7 @@ $(window).ready(function(){
             }
         }
     })
-    $('#carousel-service').owlCarousel({
+    $('.carousel-service').owlCarousel({
         autoplay: true,
         dots: false,
         loop:true,
@@ -79,7 +79,7 @@ $(window).ready(function(){
             }
         }
     })
-    $('#carousel-services').owlCarousel({
+    $('#carousel-service').owlCarousel({
         autoplay: true,
         dots: false,
         loop:true,
