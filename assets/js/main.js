@@ -1,7 +1,12 @@
-$(window).ready(function(){
-    // loading
+function load() {
     let loading = document.querySelector(".loading");
     loading.className += " hidden";
+}
+load();
+
+$(window).ready(function(){
+    // loading
+    
     // window.addEventListener("load", ()=>{
     //     let loading = document.querySelector(".loading");
     //     loading.className += " hidden";
