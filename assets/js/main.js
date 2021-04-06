@@ -1,4 +1,11 @@
 $(window).ready(function(){
+    // loading
+    let loading = document.querySelector(".loading");
+    loading.className += " hidden";
+    // window.addEventListener("load", ()=>{
+    //     let loading = document.querySelector(".loading");
+    //     loading.className += " hidden";
+    // })
     var check = "theFirst";
     $(".nav-bar").click(function(){
         if (check == "theFirst") {
