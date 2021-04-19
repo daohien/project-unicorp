@@ -170,34 +170,16 @@ function getBounding() {
                 }  
             }) 
         })
-    } else if (counter_style01 && pie_chart ){
-        var number_pie = document.querySelectorAll(".percent .number"); 
+    } else if (counter_style01){
         const numbers = document.querySelectorAll(".counter.style-01 .value .number");
         const speech = 10;
+        var pie_chart = document.getElementById("pie-chart");
+        var number_pie = document.querySelectorAll(".percent .number");
         window.addEventListener("scroll", function check() {
-            number_pie.forEach((item, idx, arr) => {
-                var react = item.getBoundingClientRect();
-                var t = react.top;
-                var h = window.innerHeight;
-                if(t < h){
-                    var data = Number(item.dataset.number); 
-                    var start = 0 ;
-                    var set_Time = setInterval(()=>{
-                        start += 5;
-                        item.innerHTML = start + "%";
-                        if ( start == data) {
-                            clearInterval(set_Time);
-                        }
-                        item.style.background = "radial-gradient( circle closest-side, white 0%, white 80%, transparent 80%, transparent 90%, white 0),conic-gradient(#2980b9 0, #2980b9 "+ start +"%,  #f3f3f3 0%, #f3f3f3 100%)"
-                    },100)
-                    window.removeEventListener("scroll",check);
-                }     
-            })  
-
             numbers.forEach(counter => {
-                const react = counter.getBoundingClientRect();
-                const t = react.top;
-                const h = window.innerHeight;	
+                let react = counter.getBoundingClientRect();
+                let t = react.top;
+                let h = window.innerHeight;	
                 if(t < h) {
                     const updateCounter = () => {
                         const target = +counter.getAttribute('data-number');
@@ -205,7 +187,6 @@ function getBounding() {
                         const inc = target / speech;
                         if (count < target) {
                             counter.innerText = Math.ceil(count + inc);
-                            console.log(counter)
                             setTimeout(updateCounter, 1000)
                         } else {
                             count.innerText = target;
@@ -214,6 +195,24 @@ function getBounding() {
                     updateCounter()
                 }
             })
+            var react = pie_chart.getBoundingClientRect();
+            var t = react.top;
+            var h = innerHeight;
+            if(t < h){
+                number_pie.forEach(function(item, idx, arr){     
+                    var data = Number(item.dataset.target); 
+                    var start = 0 ;
+                    var set_Time = setInterval(function(){
+                        start += 5;
+                        item.innerHTML = start + "%";
+                        if ( start == data) {
+                            clearInterval(set_Time);
+                        }
+                        item.style.background = "radial-gradient( circle closest-side, white 0%, white 80%, transparent 80%, transparent 90%, white 0),conic-gradient(#2980b9 0, #2980b9 "+ start +"%,  #f3f3f3 0%, #f3f3f3 100%)"
+                    },100)
+                    window.removeEventListener("scroll",check);
+                })
+            }
         })
     }
 }
