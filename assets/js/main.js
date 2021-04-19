@@ -94,13 +94,13 @@ $(window).ready(function(){
         nav:false,
         responsive:{
             0:{
-                items:2
+                items:1
             },
             600:{
-                items:3
+                items:2
             },
             900: {
-                items:4
+                items:3
             },
             1000:{
                 items:4
@@ -149,70 +149,73 @@ function getBounding() {
     var counter_style02 = document.querySelector(".counter.style-02");
     var pie_chart = document.querySelector(".pie-chart");
     var number = document.querySelectorAll(".counter .value .number") 
-        if (counter_style02) { 
-            var number = document.querySelectorAll(".number");   
-            number.forEach((item, idx, arr) => {
-                var item_data = Number(item.dataset.number);
-                window.addEventListener("scroll", function check() {
-                    var react = item.getBoundingClientRect();
-                    var t = react.top;
-                    var h = window.innerHeight;  
-                    if(t < h) {
-                        var start = 0;
-                        var set_Time = setInterval(()=>{
-                            start += 5;
-                            item.innerHTML = start;
-                            if (start == item_data){  
-                                clearInterval(set_Time);         
-                            }                
-                        }, 100)
-                        window.removeEventListener("scroll",check);
-                    }  
-                }) 
+    if (counter_style02) { 
+        var number = document.querySelectorAll(".number");   
+        number.forEach((item, idx, arr) => {
+            var item_data = Number(item.dataset.number);
+            window.addEventListener("scroll", function check() {
+                var react = item.getBoundingClientRect();
+                var t = react.top;
+                var h = window.innerHeight;  
+                if(t < h) {
+                    var start = 0;
+                    var set_Time = setInterval(()=>{
+                        start += 5;
+                        item.innerHTML = start;
+                        if (start == item_data){  
+                            clearInterval(set_Time);         
+                        }                
+                    }, 100)
+                    window.removeEventListener("scroll",check);
+                }  
+            }) 
+        })
+    } else if (counter_style01 && pie_chart ){
+        var number_pie = document.querySelectorAll(".percent .number"); 
+        const numbers = document.querySelectorAll(".counter.style-01 .value .number");
+        const speech = 10;
+        window.addEventListener("scroll", function check() {
+            number_pie.forEach((item, idx, arr) => {
+                var react = item.getBoundingClientRect();
+                var t = react.top;
+                var h = window.innerHeight;
+                if(t < h){
+                    var data = Number(item.dataset.number); 
+                    var start = 0 ;
+                    var set_Time = setInterval(()=>{
+                        start += 5;
+                        item.innerHTML = start + "%";
+                        if ( start == data) {
+                            clearInterval(set_Time);
+                        }
+                        item.style.background = "radial-gradient( circle closest-side, white 0%, white 80%, transparent 80%, transparent 90%, white 0),conic-gradient(#2980b9 0, #2980b9 "+ start +"%,  #f3f3f3 0%, #f3f3f3 100%)"
+                    },100)
+                    window.removeEventListener("scroll",check);
+                }     
+            })  
+
+            numbers.forEach(counter => {
+                const react = counter.getBoundingClientRect();
+                const t = react.top;
+                const h = window.innerHeight;	
+                if(t < h) {
+                    const updateCounter = () => {
+                        const target = +counter.getAttribute('data-number');
+                        const count = +counter.innerText;
+                        const inc = target / speech;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            console.log(counter)
+                            setTimeout(updateCounter, 1000)
+                        } else {
+                            count.innerText = target;
+                        }
+                    } 
+                    updateCounter()
+                }
             })
-        } else if (counter_style01 && pie_chart){
-            var number_pie = document.querySelectorAll(".percent .number");
-            var number = document.querySelectorAll(".counter .value .number")
-            window.addEventListener("scroll", function check(){
-                number_pie.forEach((item, idx, arr) => {
-                    var react = item.getBoundingClientRect();
-                    var t = react.top;
-                    var h = window.innerHeight;
-                    if(t < h){
-                        var data = Number(item.dataset.number); 
-                        var start = 0 ;
-                        var set_Time = setInterval(()=>{
-                            start += 5;
-                            item.innerHTML = start + "%";
-                            if ( start == data) {
-                                clearInterval(set_Time);
-                            }
-                            item.style.background = "radial-gradient( circle closest-side, white 0%, white 80%, transparent 80%, transparent 90%, white 0),conic-gradient(#2980b9 0, #2980b9 "+ start +"%,  #f3f3f3 0%, #f3f3f3 100%)"
-                        },100)
-                        window.removeEventListener("scroll",check);
-                    }     
-                })   
-            })
-            number.forEach(function(number_item, idx, arr){
-                var data_number = Number(number_item.dataset.number);
-                window.addEventListener("scroll", function test(){
-                    var react = number_item.getBoundingClientRect();
-                    var t = react.top;
-                    var h = window.innerHeight;
-                    if ( t < h ) {
-                        var start = 0;
-                        var set_Time = setInterval(function(){
-                            start += 10;
-                            number_item.innerHTML = start;
-                            if (start == data_number){
-                                clearInterval(set_Time);
-                            }  
-                        }, 100)
-                        window.removeEventListener("scroll", test);
-                    }
-                })
-            })
-        }
+        })
+    }
 }
 getBounding()
 

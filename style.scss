@@ -504,11 +504,28 @@ $time: 0.1s;
         .contact-us {
             width: 180px;
             height: 54px;
-            line-height: 54px;
-            background: $secondary-color;
+            background-color: $secondary-color;
             border-radius: 5px;
+            text-align: center;
+            line-height: 54px;
+            position: relative;
             .simple-link {
-                color: #fefefe;
+                color: #fff;
+                transition: all .3s ease;
+                &::before {
+                    content: " ";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 50%;
+                    height: 100%;
+                    background: linear-gradient(to left, rgba(255, 255, 255,0.15), transparent);
+                    transform: skew(45deg) translateX(0);
+                }
+                &:hover {
+                    color: $accent-color;
+                    transition: all .3s ease;
+                }
             }
         }
     }
@@ -778,7 +795,6 @@ $time: 0.1s;
 .counter {
     &.style-01 {
         width: 100%;
-        height: 100%;
         .heading-wrapper {
             // padding: 0 180px;
             max-width: 920px;
@@ -2063,12 +2079,12 @@ $time: 0.1s;
                 top: -130px;
                 left: 50%;
                 transform: translateX(-50%);
+                // animation: phone .10s infinite;
             }
             .mac-book {
                 position: absolute;
                 bottom: 0;
-                right: -50%;
-                
+                right: -50%;  
                 transform: translateX(-50%);
             }
         }
@@ -2093,10 +2109,30 @@ $time: 0.1s;
             .icon-project {
                 font-size: 20px;
                 font-weight: 100;
+                transition: all .3s ease;
+                &:hover {
+                    transform: translateX(10px);
+                    transition: all .3s ease;
+                    cursor: pointer;
+                    color: $accent-bg;
+                }
             }
         }
     }
 }
+
+// @keyframes phone {
+//     0% {
+//         transform: translateY(0);
+//     }
+//     50% {
+//         transform: translateY(30px);   
+//     }
+//     100% {
+//         transform: translateY(0);
+        
+//     }
+// }
 
 // Newsletter 
 
@@ -2805,6 +2841,21 @@ $res_1200: "only screen and (min-width: 1200px)";
             flex-wrap: nowrap ;
         }
     }
+    // service
+    .service {
+        &.style-01 {
+            .carousel {
+                #carousel-service {
+                    .service-item {
+                        margin-top: 0;
+                        &.mg-top {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
     // connect
     .connect {
         margin-top: 350px;
@@ -2872,6 +2923,23 @@ $res_1200: "only screen and (min-width: 1200px)";
                 }
                 &.style-02 {
                     top: 40px;
+                }
+            }
+        }
+    }
+
+    // service 
+    .service {
+        &.style-01 {
+            .carousel {
+                margin-top: 60px;
+                #carousel-service {
+                    .service-item {
+                        margin-top: 0;
+                        &.mg-top {
+                            margin-top: 0;
+                        }
+                    }
                 }
             }
         }
@@ -3064,6 +3132,19 @@ $res_1200: "only screen and (min-width: 1200px)";
             }
         }
     }
+    .service {
+        &.style-01 {
+            .carousel {
+                &#carousel-service {
+                    .service-item {
+                        &.mg-top {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
     
 }
 @include responsive_480{
@@ -3157,6 +3238,9 @@ $res_1200: "only screen and (min-width: 1200px)";
                     .item {
                         .heading {
                             padding-right: 10px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            padding-right: 20px;
                         }
                         &.active {
                             .desc {
@@ -3168,11 +3252,15 @@ $res_1200: "only screen and (min-width: 1200px)";
                 }
             }
             .thumbnail-wrap {
+                margin-top: -80px;
                 img {
                     border-radius: 5px;
                 }
                 .thumbnail-top {
                     margin-bottom: 15px;
+                }
+                .thumbnail-bottom {
+                    margin-top: 140px;
                 }
             }
         }
@@ -3193,7 +3281,6 @@ $res_1200: "only screen and (min-width: 1200px)";
             }
         }
         &.style-03 {
-        
             .about-us_main {
                 .sub-heading {
                     span {

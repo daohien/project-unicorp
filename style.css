@@ -451,13 +451,36 @@ img {
 .header .navigation .contact-us {
   width: 180px;
   height: 54px;
-  line-height: 54px;
-  background: #4a83fb;
+  background-color: #4a83fb;
   border-radius: 5px;
+  text-align: center;
+  line-height: 54px;
+  position: relative;
 }
 
 .header .navigation .contact-us .simple-link {
-  color: #fefefe;
+  color: #fff;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.header .navigation .contact-us .simple-link::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0.15)), to(transparent));
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  -webkit-transform: skew(45deg) translateX(0);
+          transform: skew(45deg) translateX(0);
+}
+
+.header .navigation .contact-us .simple-link:hover {
+  color: #2dca73;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 @-webkit-keyframes begin {
@@ -817,7 +840,6 @@ img {
 
 .counter.style-01 {
   width: 100%;
-  height: 100%;
 }
 
 .counter.style-01 .heading-wrapper {
@@ -2241,6 +2263,17 @@ img {
 .project .item .project-wrap .icon-project {
   font-size: 20px;
   font-weight: 100;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.project .item .project-wrap .icon-project:hover {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  cursor: pointer;
+  color: #2dca73;
 }
 
 .news-letter {
@@ -2901,6 +2934,12 @@ footer .copy-right .copy-right_left .simple-link span {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
   }
+  .service.style-01 .carousel #carousel-service .service-item {
+    margin-top: 0;
+  }
+  .service.style-01 .carousel #carousel-service .service-item.mg-top {
+    margin-top: 0;
+  }
   .connect {
     margin-top: 350px;
   }
@@ -2997,6 +3036,15 @@ footer .copy-right .copy-right_left .simple-link span {
   }
   .project .item .project-wrap.style-02 {
     top: 40px;
+  }
+  .service.style-01 .carousel {
+    margin-top: 60px;
+  }
+  .service.style-01 .carousel #carousel-service .service-item {
+    margin-top: 0;
+  }
+  .service.style-01 .carousel #carousel-service .service-item.mg-top {
+    margin-top: 0;
   }
   .form .form-table {
     margin-top: -200px;
@@ -3198,6 +3246,9 @@ footer .copy-right .copy-right_left .simple-link span {
   .service .sub-heading span::after {
     width: 0;
   }
+  .service.style-01 .carousel#carousel-service .service-item.mg-top {
+    margin-top: 0;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 576px) {
@@ -3358,16 +3409,25 @@ footer .copy-right .copy-right_left .simple-link span {
   }
   .about-us.style-01 .accordion .accordion-wrapper .item .heading {
     padding-right: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    padding-right: 20px;
   }
   .about-us.style-01 .accordion .accordion-wrapper .item.active .desc {
     padding: 0;
     margin-bottom: 20px;
+  }
+  .about-us.style-01 .thumbnail-wrap {
+    margin-top: -80px;
   }
   .about-us.style-01 .thumbnail-wrap img {
     border-radius: 5px;
   }
   .about-us.style-01 .thumbnail-wrap .thumbnail-top {
     margin-bottom: 15px;
+  }
+  .about-us.style-01 .thumbnail-wrap .thumbnail-bottom {
+    margin-top: 140px;
   }
   .about-us.style-02 .thumbnail-wrap {
     display: none;
